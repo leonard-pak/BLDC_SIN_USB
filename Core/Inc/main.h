@@ -59,19 +59,6 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define LIN_A_Pin GPIO_PIN_13
-#define LIN_A_GPIO_Port GPIOB
-#define LIN_B_Pin GPIO_PIN_14
-#define LIN_B_GPIO_Port GPIOB
-#define LIN_C_Pin GPIO_PIN_15
-#define LIN_C_GPIO_Port GPIOB
-#define HIN_A_Pin GPIO_PIN_8
-#define HIN_A_GPIO_Port GPIOA
-#define HIN_B_Pin GPIO_PIN_9
-#define HIN_B_GPIO_Port GPIOA
-#define HIN_C_Pin GPIO_PIN_10
-#define HIN_C_GPIO_Port GPIOA
-
 /* ########################## Assert Selection ############################## */
 /**
   * @brief Uncomment the line below to expanse the "assert_param" macro in the 
