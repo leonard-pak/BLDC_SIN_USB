@@ -54,14 +54,16 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "math.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+double angle = 0;
+double step = 0;
+uint16_t PWM_MAX = 650;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -108,7 +110,13 @@ int main(void)
   MX_TIM1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
+	HAL_TIM_Base_Start_IT(&htim1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,7 +127,9 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
+		TIM1->CCR1 = (PWM_MAX/2 + (PWM_MAX*sin(angle))/2);
+		TIM1->CCR2 = (PWM_MAX/2 + (PWM_MAX*sin(angle - 2*3.14/3))/2);
+		TIM1->CCR3 = (PWM_MAX/2 + (PWM_MAX*sin(angle + 2*3.14/3))/2);
   }
   /* USER CODE END 3 */
 
