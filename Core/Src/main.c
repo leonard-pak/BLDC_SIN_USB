@@ -61,9 +61,9 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-double angle = 0;
-double step = 0;
-uint16_t PWM_MAX = 650;
+double angle = 0.0;
+double step = 0.0;
+uint16_t PWM_MAX = 600;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -128,8 +128,8 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
 		TIM1->CCR1 = (PWM_MAX/2 + (PWM_MAX*sin(angle))/2);
-		TIM1->CCR2 = (PWM_MAX/2 + (PWM_MAX*sin(angle - 2*3.14/3))/2);
-		TIM1->CCR3 = (PWM_MAX/2 + (PWM_MAX*sin(angle + 2*3.14/3))/2);
+  	TIM1->CCR2 = (PWM_MAX/2 + (PWM_MAX*sin(angle - 2*3.14/3))/2);
+  	TIM1->CCR3 = (PWM_MAX/2 + (PWM_MAX*sin(angle + 2*3.14/3))/2);
   }
   /* USER CODE END 3 */
 

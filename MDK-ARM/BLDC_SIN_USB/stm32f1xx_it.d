@@ -29,3 +29,14 @@ bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_p
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h
 bldc_sin_usb\stm32f1xx_it.o: ../Core/Inc/stm32f1xx_it.h
+bldc_sin_usb\stm32f1xx_it.o: ../USB_DEVICE/usbd_cdc_if.h
+bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
+bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
+bldc_sin_usb\stm32f1xx_it.o: ../USB_DEVICE/usbd_conf.h
+bldc_sin_usb\stm32f1xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+bldc_sin_usb\stm32f1xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
+bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
+bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h

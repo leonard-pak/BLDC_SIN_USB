@@ -36,8 +36,12 @@
 #include "stm32f1xx_it.h"
 
 /* USER CODE BEGIN 0 */
+#include "usbd_cdc_if.h"
 extern double angle;
 extern double step;
+uint16_t tick = 0;
+char str[256];
+char *tx;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -178,7 +182,21 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-
+	tick++;
+	if (tick == 500) {
+		tick = 0;
+		sprintf(str, "Angle: %.2f Step: %0.10f \r\n", angle, step);
+		for(int i = 0; i < sizeof(str); i++) {
+			if ((uint8_t) str[i] == 0x00) {
+				tx = (char*)malloc(i*sizeof(char));
+				memcpy(tx, str, i);
+				CDC_Transmit_FS((uint8_t*) tx, i);
+				free(tx);
+				break;
+			}
+		}
+		
+	}
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   HAL_SYSTICK_IRQHandler();
