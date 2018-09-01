@@ -182,13 +182,17 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
+	// Info-message transmition every 500 ms
 	tick++;
 	if (tick == 500) {
 		tick = 0;
 		sprintf(str, "Angle: %.2f Step: %0.10f \r\n", angle, step);
+	//Search of the first occurrence of empty cell
 		for(int i = 0; i < sizeof(str); i++) {
 			if ((uint8_t) str[i] == 0x00) {
+	//Take necessary quantity of memory
 				tx = (char*)malloc(i*sizeof(char));
+	//Copying
 				memcpy(tx, str, i);
 				CDC_Transmit_FS((uint8_t*) tx, i);
 				free(tx);
