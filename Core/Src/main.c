@@ -49,6 +49,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
+#include "spi.h"
 #include "tim.h"
 #include "usb_device.h"
 #include "gpio.h"
@@ -64,6 +65,9 @@
 double angle = 0.0;
 double step = 0.0;
 uint16_t PWM_MAX = 600;
+//SPI variables
+uint8_t Tx[2]; 
+uint8_t Rx[2];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,6 +113,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   MX_USB_DEVICE_Init();
+  MX_SPI1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
@@ -118,6 +124,11 @@ int main(void)
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_3);
 	//Interrupt for angle increment
 	HAL_TIM_Base_Start_IT(&htim1);
+	//Interrupt for SRI talking every ~750ms
+	HAL_TIM_Base_Start_IT(&htim3);
+	// Initialization SPI variables. 0x3FFF - command for getting the angle
+	*((uint16_t *) Tx) = 0x3FFF;
+	*((uint16_t *) Rx) = 0x00;
   /* USER CODE END 2 */
 
   /* Infinite loop */

@@ -23,6 +23,7 @@ bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1
 bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 bldc_sin_usb\stm32f1xx_hal_pcd_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h

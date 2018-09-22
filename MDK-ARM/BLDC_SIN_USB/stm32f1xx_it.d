@@ -23,6 +23,7 @@ bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_c
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 bldc_sin_usb\stm32f1xx_it.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h
@@ -40,3 +41,5 @@ bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc
 bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
 bldc_sin_usb\stm32f1xx_it.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
+bldc_sin_usb\stm32f1xx_it.o: ../Core/Inc/spi.h
+bldc_sin_usb\stm32f1xx_it.o: ../Core/Inc/gpio.h

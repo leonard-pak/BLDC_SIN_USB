@@ -37,16 +37,22 @@
 
 /* USER CODE BEGIN 0 */
 #include "usbd_cdc_if.h"
+#include "spi.h"
+#include "gpio.h"
 extern double angle;
 extern double step;
+extern uint8_t Tx[2];
+extern uint8_t Rx[2];
+double cur_angle = 0.0;
 uint16_t tick = 0;
 char str[256];
-char *tx;
+char *tx; // for dinamic mass
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
 extern PCD_HandleTypeDef hpcd_USB_FS;
 extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim3;
 
 /******************************************************************************/
 /*            Cortex-M3 Processor Interruption and Exception Handlers         */ 
@@ -182,11 +188,11 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-	// Info-message transmition every 500 ms
+// Info-message transmition every 500 ms
 	tick++;
 	if (tick == 500) {
 		tick = 0;
-		sprintf(str, "Angle: %.2f Step: %0.10f \r\n", angle, step);
+		sprintf(str, "Angle: %.2f Step: %0.10f \r\n", cur_angle, step);
 	//Search of the first occurrence of empty cell
 		for(int i = 0; i < sizeof(str); i++) {
 			if ((uint8_t) str[i] == 0x00) {
@@ -242,6 +248,25 @@ void TIM1_UP_IRQHandler(void)
   /* USER CODE BEGIN TIM1_UP_IRQn 1 */
 
   /* USER CODE END TIM1_UP_IRQn 1 */
+}
+
+/**
+* @brief This function handles TIM3 global interrupt.
+*/
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+  //Recieve data of angle from encoder
+		HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_RESET);
+		HAL_SPI_TransmitReceive(&hspi1, Tx, Rx, 1, 1000);
+		HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+	//Conversion of the obtained data
+		cur_angle = ( *((uint16_t*)Rx) & 0x3FFF)*0.021973997; 
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  /* USER CODE END TIM3_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

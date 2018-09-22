@@ -59,6 +59,8 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define SPI1_CS_Pin GPIO_PIN_0
+#define SPI1_CS_GPIO_Port GPIOB
 #define LIN_A_Pin GPIO_PIN_13
 #define LIN_A_GPIO_Port GPIOB
 #define LIN_B_Pin GPIO_PIN_14
